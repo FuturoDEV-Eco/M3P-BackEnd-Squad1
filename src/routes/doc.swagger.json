@@ -1,0 +1,416 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RECICLA 365 API",
+    "description": "Documentação da API RECICLA 365 usando Express e Sequelize",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "Insira o token JWT"
+    }
+  },
+  "paths": {
+    "/usuarios/": {
+      "post": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "Endpoint para criar um usuário",
+        "parameters": [
+          {
+            "name": "criarUsuario",
+            "in": "body",
+            "description": "Dados do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Teste"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "teste@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "senha123"
+                },
+                "cpf": {
+                  "type": "string",
+                  "example": "111.111.111-11"
+                },
+                "sexo": {
+                  "type": "string",
+                  "example": "Feminino ou Masculino"
+                },
+                "data_nascimento": {
+                  "type": "string",
+                  "example": "AAAA-MM-DD"
+                },
+                "endereco": {
+                  "type": "string",
+                  "example": "Rua, número, Bairro, Cidade, Estado"
+                }
+              },
+              "required": [
+                "nome",
+                "email",
+                "password",
+                "cpf",
+                "sexo",
+                "data_nascimento",
+                "endereco"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/usuarios/login": {
+      "post": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "Endpoint para o usuário realizar login",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "body",
+            "description": "Dados do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "teste@email.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "senha123"
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/locaisColeta/": {
+      "post": {
+        "tags": [
+          "Locais de Coleta"
+        ],
+        "description": "Endpoint para criar um local de coleta",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "criarLocal",
+            "in": "body",
+            "description": "Dados do novo local de coleta",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Teste"
+                },
+                "descricao": {
+                  "type": "string",
+                  "example": "Exemplo de descrição"
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "88888888"
+                },
+                "contato": {
+                  "type": "string",
+                  "example": "(48) 999999999"
+                },
+                "tipo_residuos": {
+                  "type": "string",
+                  "example": "Papelão e metais"
+                }
+              },
+              "required": [
+                "nome",
+                "descricao",
+                "cep",
+                "contato",
+                "tipo_residuos"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Locais de Coleta"
+        ],
+        "description": "Endpoint para listar todos os seus locais de coleta cadastrados",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/locaisColeta/{id}": {
+      "get": {
+        "tags": [
+          "Locais de Coleta"
+        ],
+        "description": "Endpoint para listar um local de coleta específico",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Locais de Coleta"
+        ],
+        "description": "Endpoint para excluir um local de coleta cadastrado",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Locais de Coleta"
+        ],
+        "description": "Endpoint para atualizar dados de um local de coleta",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "atualizar",
+            "in": "body",
+            "description": "Dados novos do local de coleta",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Novo nome"
+                },
+                "descricao": {
+                  "type": "string",
+                  "example": "Exemplo de nova descrição"
+                }
+              },
+              "required": [
+                "nome",
+                "descricao"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/locaisColeta/{id}/maps": {
+      "get": {
+        "tags": [
+          "Locais de Coleta"
+        ],
+        "description": "Endpoint para acessar link do Google com a localização do local de coleta",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "apiKeyAuth": []
+    }
+  ]
+}
