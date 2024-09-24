@@ -43,7 +43,7 @@ const LocalColeta = connection.define(
         contato: {
             type: DataTypes.STRING
         },
-        tipo_residuos: {
+        tipos_residuo: {
             type: DataTypes.STRING
         },
         usuario_id: {

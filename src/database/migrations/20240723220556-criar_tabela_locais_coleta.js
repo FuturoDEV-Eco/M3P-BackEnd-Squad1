@@ -53,7 +53,7 @@ module.exports = {
         contato: {
           type: Sequelize.STRING(100),
         },
-        tipo_residuos: {
+        tipos_residuo: {
           type: Sequelize.STRING(150),
         },
         usuario_id: {

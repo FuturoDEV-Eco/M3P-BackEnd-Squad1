@@ -21,9 +21,15 @@ class LocalColetaController{
                 cep: dados.cep,
                 lon: local.lon,
                 lat: local.lat,
+                logradouro: dados.logradouro,
+                complemento: dados.complemento,
+                numero: dados.numero,
+                bairro: dados.bairro,
+                localidade: dados.localidade,
+                uf: dados.uf,
                 googleMapsLink: link,
                 contato: dados.contato,
-                tipo_residuos: dados.tipo_residuos,
+                tipos_residuo: dados.tipos_residuo,
                 usuario_id: request.usuarioId
             })
 
@@ -38,6 +44,7 @@ class LocalColetaController{
         }
     }
 
+//Listagem com usuário logado
     async listarLocais(request, response){
         try {
             const locais = await LocalColeta.findAll({
@@ -134,7 +141,13 @@ class LocalColetaController{
             localColeta.nome = dados.nome
             localColeta.descricao = dados.descricao
             localColeta.contato = dados.contato
-            localColeta.tipo_residuos = dados.tipo_residuos
+            localColeta.tipos_residuo = dados.tipos_residuo
+            localColeta.logradouro = dados.logradouro
+            localColeta.complemento = dados.complemento
+            localColeta.numero = dados.numero
+            localColeta.bairro = dados.bairro
+            localColeta.localidade = dados.localidade
+            localColeta.uf = dados.uf
             await localColeta.save()
 
             response.json(localColeta)
