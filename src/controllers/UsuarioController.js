@@ -12,7 +12,7 @@ class UsuarioController{
             
             const dados = request.body 
 
-            if(!dados.nome || !dados.email || !dados.password || !dados.data_nascimento || !dados.cpf  ){
+            if(!dados.nome || !dados.email || !dados.password || !dados.data_nascimento || !dados.cpf || !dados.sexo  || !dados.cep){
                 return response.status(400)
                 .json({mensagem: "Existem dados obrigatórios incompletos"}) 
             }
@@ -51,8 +51,13 @@ class UsuarioController{
                 password: dados.password,
                 sexo: dados.sexo,
                 data_nascimento: dados.data_nascimento,
-                endereco: dados.endereco,
-                cpf: dados.cpf
+                cpf: dados.cpf,
+                cep: dados.cep,
+                rua: dados.rua,
+                bairro: dados.bairro,
+                cidade: dados.cidade,
+                estado: dados.estado,
+                complemento: dados.complemento
             })
 
             response.status(201)
@@ -68,6 +73,96 @@ class UsuarioController{
 
     }
 
+    async listarUsuarios(request, response) {
+        try {
+            const usuarios = await Usuario.findAll({
+                attributes: ['id', 'nome', 'email', 'cpf', 'sexo', 'data_nascimento', 'cep', 'rua', 'bairro', 'cidade', 'estado', 'complemento'] // selecione os campos que deseja listar
+            });
+    
+            if (usuarios.length === 0) {
+                return response.status(404).json({ mensagem: "Nenhum usuário encontrado" });
+            }
+    
+            response.status(200).json(usuarios);
+        } catch (error) {
+            console.log(error);
+             return response.status(500).json({ mensagem: "Erro ao buscar usuários" });
+        }
+    }
+
+    async deletarUsuario(request, response) {
+        try {
+            const id = request.params.id
+            const usuario = await Usuario.findByPk(id)
+
+            if (!usuario) {              
+             return response.status(404).json({mensagem: 'Usuário não encontrado'})
+            }
+
+            await usuario.destroy()
+
+            return response.status(200).json({mensagem: 'Usuário excluido com sucesso'})
+
+        } catch (error) {
+            return response.status(500).json({mensagem: 'Erro ao deletar o usuário'})
+        }
+    }
+
+    async atualizar(request, response) {
+        try {
+            const id = request.params.id
+            const dados = request.body
+
+            const usuario = await Usuario.findByPk(id)
+
+            if (!usuario) {
+                return response.status(404).json({ mensagem: 'Usuário não encontrado' })
+            }
+
+            if (dados.nome) {
+                usuario.nome = dados.nome
+            }
+            if (dados.email) {
+                usuario.email = dados.email
+            }
+            if (dados.password) {
+                usuario.password = dados.password
+            } 
+            if (dados.sexo) {
+                usuario.sexo = dados.sexo
+            }
+            if (dados.data_nascimento) {
+                usuario.data_nascimento = dados.data_nascimento
+            }
+            if (dados.cpf) {
+                usuario.cpf = dados.cpf
+            }
+            if (dados.cep) {
+                usuario.cep = dados.cep
+            }
+            if (dados.rua) {
+                usuario.rua = dados.rua
+            }
+            if (dados.bairro) {
+                usuario.bairro = dados.bairro
+            }
+            if (dados.cidade) {
+                usuario.cidade = dados.cidade
+            }
+            if (dados.estado) {
+                usuario.estado = dados.estado
+            }
+            if (dados.complemento) {
+                usuario.complemento = dados.complemento
+            }
+            await usuario.save()
+
+            return response.json(usuario)
+
+        } catch (error) {
+            return response.status(500).json({mensagem: 'Erro ao atualizar usuário'})
+        }
+    }
 
     async login(request, response){
         try {
