@@ -29,18 +29,19 @@ const Usuario = connection.define(
         rua: {
             type: DataTypes.STRING
         },
+        complemento: {
+            type: DataTypes.STRING
+        },
         bairro: {
             type: DataTypes.STRING
         },
         cidade: {
             type: DataTypes.STRING
         },
-        estado: {
+        uf: {
             type: DataTypes.STRING
         },
-        complemento: {
-            type: DataTypes.STRING
-        },
+
     }
 )
 

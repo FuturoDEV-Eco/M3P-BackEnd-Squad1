@@ -56,7 +56,7 @@ class UsuarioController{
                 rua: dados.rua,
                 bairro: dados.bairro,
                 cidade: dados.cidade,
-                estado: dados.estado,
+                uf: dados.uf,
                 complemento: dados.complemento
             })
 
@@ -76,7 +76,7 @@ class UsuarioController{
     async listarUsuarios(request, response) {
         try {
             const usuarios = await Usuario.findAll({
-                attributes: ['id', 'nome', 'email', 'cpf', 'sexo', 'data_nascimento', 'cep', 'rua', 'bairro', 'cidade', 'estado', 'complemento'] // selecione os campos que deseja listar
+                attributes: ['id', 'nome', 'email', 'cpf', 'sexo', 'data_nascimento', 'cep', 'rua', 'bairro', 'cidade', 'uf', 'complemento'] // selecione os campos que deseja listar
             });
     
             if (usuarios.length === 0) {
@@ -149,8 +149,8 @@ class UsuarioController{
             if (dados.cidade) {
                 usuario.cidade = dados.cidade
             }
-            if (dados.estado) {
-                usuario.estado = dados.estado
+            if (dados.uf) {
+                usuario.uf = dados.uf
             }
             if (dados.complemento) {
                 usuario.complemento = dados.complemento
