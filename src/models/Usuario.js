@@ -23,10 +23,24 @@ const Usuario = connection.define(
         data_nascimento: {
             type: DataTypes.DATEONLY
         },
-        endereco: {
+        cep: {
             type: DataTypes.STRING
         },
-    
+        rua: {
+            type: DataTypes.STRING
+        },
+        bairro: {
+            type: DataTypes.STRING
+        },
+        cidade: {
+            type: DataTypes.STRING
+        },
+        estado: {
+            type: DataTypes.STRING
+        },
+        complemento: {
+            type: DataTypes.STRING
+        },
     }
 )
 
