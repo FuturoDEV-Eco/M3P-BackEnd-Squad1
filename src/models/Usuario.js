@@ -35,7 +35,7 @@ const Usuario = connection.define(
         cidade: {
             type: DataTypes.STRING
         },
-        estado: {
+        uf: {
             type: DataTypes.STRING
         },
         complemento: {

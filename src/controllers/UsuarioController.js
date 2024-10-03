@@ -13,7 +13,7 @@ class UsuarioController{
             
             const dados = request.body 
 
-            if(!dados.nome || !dados.email || !dados.senha || !dados.dataNascimento || !dados.cpf || !dados.sexo  || !dados.endereco.cep){
+            if(!dados.nome || !dados.email || !dados.senha || !dados.dataNascimento || !dados.cpf || !dados.sexo  || !dados.cep){
                 return response.status(400)
                 .json({mensagem: "Existem dados obrigatórios incompletos"}) 
             }
@@ -53,12 +53,12 @@ class UsuarioController{
                 sexo: dados.sexo,
                 data_nascimento: dados.dataNascimento,
                 cpf: dados.cpf,
-                cep: dados.endereco.cep,
-                logradouro: dados.endereco.logradouro,
-                bairro: dados.endereco.bairro,
-                cidade: dados.endereco.cidade,
-                estado: dados.endereco.estado,
-                complemento: dados.endereco.complemento
+                cep: dados.cep,
+                logradouro: dados.logradouro,
+                bairro: dados.bairro,
+                cidade: dados.cidade,
+                uf: dados.uf,
+                complemento: dados.complemento
             })
 
             response.status(201)
@@ -145,22 +145,22 @@ class UsuarioController{
                 return response.status(400).json({ mensagem: 'Não é permitido editar o CPF.' });
             }
             if (dados.cep) {
-                usuario.cep = dados.endereco.cep
+                usuario.cep = dados.cep
             }
             if (dados.logradouro) {
-                usuario.logradouro = dados.endereco.logradouro
+                usuario.logradouro = dados.logradouro
             }
             if (dados.bairro) {
-                usuario.bairro = dados.endereco.bairro
+                usuario.bairro = dados.bairro
             }
             if (dados.cidade) {
-                usuario.cidade = dados.endereco.cidade
+                usuario.cidade = dados.cidade
             }
-            if (dados.estado) {
-                usuario.estado = dados.endereco.estado
+            if (dados.uf) {
+                usuario.uf = dados.uf
             }
             if (dados.complemento) {
-                usuario.complemento = dados.endereco.complemento
+                usuario.complemento = dados.complemento
             }
             await usuario.save()
 
