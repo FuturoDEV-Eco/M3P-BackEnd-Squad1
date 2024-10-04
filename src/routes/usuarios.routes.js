@@ -23,7 +23,7 @@ usuariosRoutes.post("/", UsuarioController.criarUsuario
             $logradouro: "Logradouro do usuário",
             $bairro: "Bairro do usuário",
             $cidade: "Cidade do usuário",
-            $estado: "Estado do usuário",
+            $uf: "Estado do usuário",
             $complemento: "Complemento do endereço do usuário",
             }
         }
@@ -68,7 +68,7 @@ usuariosRoutes.put("/:id", auth, UsuarioController.atualizarUsuario
                 $logradouro: "Logradouro do usuário",
                 $bairro: "Bairro do usuário",
                 $cidade: "Cidade do usuário",
-                $estado: "Estado do usuário",
+                $uf: "Estado do usuário",
                 $complemento: "Complemento do endereço do usuário",
             }
         }
