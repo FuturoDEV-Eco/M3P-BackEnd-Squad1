@@ -48,7 +48,7 @@ module.exports = {
           type: Sequelize.STRING(2),
         },
         googleMapsLink: {
-          type: Sequelize.STRING(100),
+          type: Sequelize.TEXT,
         },
         contato: {
           type: Sequelize.STRING(100),
