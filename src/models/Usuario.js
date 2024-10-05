@@ -14,19 +14,33 @@ const Usuario = connection.define(
         password: {
             type: DataTypes.STRING
         },
-        cpf: {
-            type: DataTypes.STRING
-        },
         sexo: {
             type: DataTypes.STRING
         },
         data_nascimento: {
             type: DataTypes.DATEONLY
         },
-        endereco: {
+        cpf: {
             type: DataTypes.STRING
         },
-    
+        cep: {
+            type: DataTypes.STRING
+        },
+        logradouro: {
+            type: DataTypes.STRING
+        },
+        bairro: {
+            type: DataTypes.STRING
+        },
+        cidade: {
+            type: DataTypes.STRING
+        },
+        uf: {
+            type: DataTypes.STRING
+        },
+        complemento: {
+            type: DataTypes.STRING
+        },
     }
 )
 

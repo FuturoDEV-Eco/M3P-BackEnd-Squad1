@@ -29,48 +29,73 @@
           {
             "name": "criarUsuario",
             "in": "body",
-            "description": "Dados do usuário",
+            "description": "Dados para criar um usuário",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "nome": {
                   "type": "string",
-                  "example": "Teste"
+                  "example": "Nome do usuário"
                 },
                 "email": {
                   "type": "string",
-                  "example": "teste@email.com"
+                  "example": "email@exemplo.com"
                 },
-                "password": {
+                "senha": {
                   "type": "string",
                   "example": "senha123"
-                },
-                "cpf": {
-                  "type": "string",
-                  "example": "111.111.111-11"
                 },
                 "sexo": {
                   "type": "string",
                   "example": "Feminino ou Masculino"
                 },
-                "data_nascimento": {
+                "dataNascimento": {
                   "type": "string",
                   "example": "AAAA-MM-DD"
                 },
-                "endereco": {
+                "cpf": {
                   "type": "string",
-                  "example": "Rua, número, Bairro, Cidade, Estado"
+                  "example": "111.111.111-11"
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "11111-111"
+                },
+                "logradouro": {
+                  "type": "string",
+                  "example": "Logradouro do usuário"
+                },
+                "bairro": {
+                  "type": "string",
+                  "example": "Bairro do usuário"
+                },
+                "cidade": {
+                  "type": "string",
+                  "example": "Cidade do usuário"
+                },
+                "uf": {
+                  "type": "string",
+                  "example": "Estado do usuário"
+                },
+                "complemento": {
+                  "type": "string",
+                  "example": "Complemento do endereço do usuário"
                 }
               },
               "required": [
                 "nome",
                 "email",
-                "password",
-                "cpf",
+                "senha",
                 "sexo",
-                "data_nascimento",
-                "endereco"
+                "dataNascimento",
+                "cpf",
+                "cep",
+                "logradouro",
+                "bairro",
+                "cidade",
+                "uf",
+                "complemento"
               ]
             }
           }
@@ -89,6 +114,184 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "Endpoint para listar todos os usuários",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/usuarios/{id}": {
+      "delete": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "Endpoint para deletar usuários",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Id para excluir usuário"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "Endpoint para atualizar usuário já existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "atualizaUsuario",
+            "in": "body",
+            "description": "Dados para atualizar o usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Nome do usuário"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "email@exemplo.com"
+                },
+                "senha": {
+                  "type": "string",
+                  "example": "senha123"
+                },
+                "sexo": {
+                  "type": "string",
+                  "example": "Feminino ou Masculino"
+                },
+                "dataNascimento": {
+                  "type": "string",
+                  "example": "AAAA-MM-DD"
+                },
+                "cpf": {
+                  "type": "string",
+                  "example": "111.111.111-11"
+                },
+                "cep": {
+                  "type": "string",
+                  "example": "11111-111"
+                },
+                "logradouro": {
+                  "type": "string",
+                  "example": "Logradouro do usuário"
+                },
+                "bairro": {
+                  "type": "string",
+                  "example": "Bairro do usuário"
+                },
+                "cidade": {
+                  "type": "string",
+                  "example": "Cidade do usuário"
+                },
+                "uf": {
+                  "type": "string",
+                  "example": "Estado do usuário"
+                },
+                "complemento": {
+                  "type": "string",
+                  "example": "Complemento do endereço do usuário"
+                }
+              },
+              "required": [
+                "nome",
+                "email",
+                "senha",
+                "sexo",
+                "dataNascimento",
+                "cpf",
+                "cep",
+                "logradouro",
+                "bairro",
+                "cidade",
+                "uf",
+                "complemento"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/usuarios/login": {
@@ -101,23 +304,23 @@
           {
             "name": "login",
             "in": "body",
-            "description": "Dados do usuário",
+            "description": "Dados de login do usuário",
             "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "email": {
                   "type": "string",
-                  "example": "teste@email.com"
+                  "example": "email@exemplo.com"
                 },
-                "password": {
+                "senha": {
                   "type": "string",
                   "example": "senha123"
                 }
               },
               "required": [
                 "email",
-                "password"
+                "senha"
               ]
             }
           }
@@ -400,6 +603,57 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "description": "Endpoint para listar todos os locais de coleta cadastrados.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/totalLocais": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "description": "Endpoint para listar a quantidade total de locais de coleta cadastrados.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/dashboard/totalUsuarios": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "description": "Endpoint para listar a quantidade total de usuários cadastrados.",
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
