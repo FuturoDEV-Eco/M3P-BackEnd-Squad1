@@ -5,7 +5,9 @@ de coleta de materiais recicláveis. Os usuários podem cadastrar novos pontos d
 encontrar pontos próximos, visualizar informações sobre os materiais aceitos em cada ponto
 e registrar suas próprias contribuições para a reciclagem. 
 
-![Recicla 365 - API](https://github.com/user-attachments/assets/80ff885a-2d0e-427c-9bba-f58cb1980909)
+![swagger](https://github.com/user-attachments/assets/49f5bd89-95dc-4b3f-a6d3-9bedf7cf793e)
+
+
 
 ## Tecnologias utilizadas
 
