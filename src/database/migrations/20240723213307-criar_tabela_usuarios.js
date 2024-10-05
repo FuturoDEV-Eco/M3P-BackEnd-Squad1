@@ -40,6 +40,9 @@ module.exports = {
         endereco: {
           type: Sequelize.STRING(200)
         },
+        uf: {
+          type: Sequelize.STRING(2),
+        },
         createdAt: {
           allowNull: false,
           type: Sequelize.DATE
