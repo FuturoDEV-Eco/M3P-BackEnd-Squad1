@@ -15,9 +15,9 @@ usuariosRoutes.post("/", UsuarioController.criarUsuario
         schema: { 
             $nome: "Nome do usuário",
             $email: "email@exemplo.com",
-            $password: "senha123",
+            $senha: "senha123",
             $sexo: "Feminino ou Masculino",
-            $data_nascimento: "AAAA-MM-DD",
+            $dataNascimento: "AAAA-MM-DD",
             $cpf: "111.111.111-11",
             $cep: "11111-111",
             $logradouro: "Logradouro do usuário",
@@ -60,9 +60,9 @@ usuariosRoutes.put("/:id", auth, UsuarioController.atualizarUsuario
             schema: { 
                 $nome: "Nome do usuário",
                 $email: "email@exemplo.com",
-                $password: "senha123",
+                $senha: "senha123",
                 $sexo: "Feminino ou Masculino",
-                $data_nascimento: "AAAA-MM-DD",
+                $dataNascimento: "AAAA-MM-DD",
                 $cpf: "111.111.111-11",
                 $cep: "11111-111",
                 $logradouro: "Logradouro do usuário",
@@ -85,7 +85,7 @@ usuariosRoutes.post("/login", UsuarioController.login
         required: true,
         schema: { 
             $email: "email@exemplo.com",
-            $password: "senha123"
+            $senha: "senha123"
             }
         }
 */

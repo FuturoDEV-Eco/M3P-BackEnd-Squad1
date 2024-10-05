@@ -42,7 +42,7 @@
                   "type": "string",
                   "example": "email@exemplo.com"
                 },
-                "password": {
+                "senha": {
                   "type": "string",
                   "example": "senha123"
                 },
@@ -50,7 +50,7 @@
                   "type": "string",
                   "example": "Feminino ou Masculino"
                 },
-                "data_nascimento": {
+                "dataNascimento": {
                   "type": "string",
                   "example": "AAAA-MM-DD"
                 },
@@ -86,9 +86,9 @@
               "required": [
                 "nome",
                 "email",
-                "password",
+                "senha",
                 "sexo",
-                "data_nascimento",
+                "dataNascimento",
                 "cpf",
                 "cep",
                 "logradouro",
@@ -217,7 +217,7 @@
                   "type": "string",
                   "example": "email@exemplo.com"
                 },
-                "password": {
+                "senha": {
                   "type": "string",
                   "example": "senha123"
                 },
@@ -225,7 +225,7 @@
                   "type": "string",
                   "example": "Feminino ou Masculino"
                 },
-                "data_nascimento": {
+                "dataNascimento": {
                   "type": "string",
                   "example": "AAAA-MM-DD"
                 },
@@ -261,9 +261,9 @@
               "required": [
                 "nome",
                 "email",
-                "password",
+                "senha",
                 "sexo",
-                "data_nascimento",
+                "dataNascimento",
                 "cpf",
                 "cep",
                 "logradouro",
@@ -313,14 +313,14 @@
                   "type": "string",
                   "example": "email@exemplo.com"
                 },
-                "password": {
+                "senha": {
                   "type": "string",
                   "example": "senha123"
                 }
               },
               "required": [
                 "email",
-                "password"
+                "senha"
               ]
             }
           }
