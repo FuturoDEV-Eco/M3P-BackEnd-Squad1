@@ -32,13 +32,6 @@ module.exports = {
       })
 
     await queryInterface.addColumn(
-      'usuarios', 'estado', 
-      {
-      type: Sequelize.STRING,
-      allowNull: false,
-      })
-
-    await queryInterface.addColumn(
       'usuarios', 'complemento',
       {
       type: Sequelize.STRING,

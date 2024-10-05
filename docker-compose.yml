@@ -15,7 +15,8 @@ services:
       - DB_DATABASE=${DB_DATABASE}
       - DB_DIALECT=${DB_DIALECT}
     depends_on:
-      - postgres-db
+      postgres-db:
+        condition: service_healthy
 
   postgres-db:
     image: postgres:14
@@ -28,6 +29,11 @@ services:
       - POSTGRES_DB=${DB_DATABASE}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${DB_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
 
 volumes:
   postgres_data:
