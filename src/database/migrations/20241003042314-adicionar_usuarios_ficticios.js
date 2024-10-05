@@ -1,5 +1,6 @@
 'use strict';
 
+const bcrypt  = require('bcryptjs');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -7,7 +8,7 @@ module.exports = {
       {
           nome: 'Helena Jaqueline Ayla',
           email: 'helena-ayla96@focusgrafica.com.br',
-          password: 'P1Tf7FLm8e',
+          password: bcrypt.hashSync('P1Tf7FLm8e', bcrypt.genSaltSync(10)),
           sexo: 'Feminino',
           data_nascimento: '1996-05-08',
           cpf: '634.560.990-02',
@@ -23,7 +24,7 @@ module.exports = {
       {
           nome: 'Regina Clara Josefa Caldeira',
           email: 'regina.clara.caldeira@agacapital.com.br',
-          password: 'zZZZXhFoSF',
+          password: bcrypt.hashSync('zZZZXhFoSF', bcrypt.genSaltSync(10)),
           sexo: 'Feminino',
           data_nascimento: '1989-07-08',
           cpf: '193.664.959-40',
@@ -39,7 +40,7 @@ module.exports = {
       {
           nome: 'Luan Sérgio Cauê Moraes',
           email: 'luan-moraes85@valedesign.com.br',
-          password: 'izdwM8YQHI',
+          password: bcrypt.hashSync('izdwM8YQHI', bcrypt.genSaltSync(10)),
           sexo: 'Masculino',
           data_nascimento: '2001-10-02',
           cpf: '365.984.769-09',
@@ -55,7 +56,7 @@ module.exports = {
       {
           nome: 'Thales Theo Raimundo Novaes',
           email: 'thalestheonovaes@petrobras.com.br',
-          password: '2kpkWLDK40',
+          password: bcrypt.hashSync('2kpkWLDK40', bcrypt.genSaltSync(10)),
           sexo: 'Masculino',
           data_nascimento: '2004-01-19',
           cpf: '561.422.929-96',
@@ -71,7 +72,7 @@ module.exports = {
       {
           nome: 'Sophie Giovanna Joana Porto',
           email: 'sophie_giovanna_porto@wsiconsultores.com.br',
-          password: '9CGTthDjkM',
+          password: bcrypt.hashSync('9CGTthDjkM', bcrypt.genSaltSync(10)),
           sexo: 'Feminino',
           data_nascimento: '1998-07-19',
           cpf: '432.536.359-96',
