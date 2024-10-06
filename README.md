@@ -78,6 +78,10 @@ O banco de dados do projeto é organizado em duas tabelas principais, a de **usu
 A relação entre as tabelas é do tipo um para muitos, onde um usuário pode possuir muitos locais de coleta. 
 Essa relação se dá pela chave estrangeira **usuario_id** na tabela locais_coleta, que referencia o **id** da tabela usuarios.
 
+### Deploy com Render
+
+![Captura de tela Deploy com Render](https://github.com/user-attachments/assets/b1f5617d-282d-40b8-bb7f-32f4f47560f3)
+
 ## Rodar o repositório:
 
 ### Na primeira vez é necessário instalar as dependencias:
