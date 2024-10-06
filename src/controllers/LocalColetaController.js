@@ -1,5 +1,5 @@
 const LocalColeta = require("../models/LocalColeta")
-const { getMapLocal, getGoogleMapsLink } = require("../services/map.service")
+const getGoogleMapsLink = require("../services/map.service")
 
 class LocalColetaController{
 
@@ -12,15 +12,14 @@ class LocalColetaController{
                 .json({mensagem: "Nome do local e CEP  são obrigatórios"})
             }
 
-            const local = await getMapLocal(dados.cep)
-            const link = await getGoogleMapsLink(local)
+            const link = await getGoogleMapsLink({ lat: dados.lat, lon: dados.lon })
 
             const novoLocal = await LocalColeta.create({
                 nome: dados.nome,
                 descricao: dados.descricao,
                 cep: dados.cep,
-                lon: local.lon,
-                lat: local.lat,
+                lon: dados.lon,
+                lat: dados.lat,
                 logradouro: dados.logradouro,
                 complemento: dados.complemento,
                 numero: dados.numero,
@@ -127,13 +126,10 @@ class LocalColetaController{
                 return response.status(404).json({ mensagem: 'Local não encontrado' })
             }
 
-            if(dados.cep){
-                const local = await getMapLocal(dados.cep)
-                const link = await getGoogleMapsLink(local)
-
-                localColeta.cep = dados.cep
-                localColeta.lon = local.lon
-                localColeta.lat = local.lat
+            if(dados.lat || dados.lon){
+                const link = await getGoogleMapsLink({ lat: dados.lat, lon: dados.lon })
+                localColeta.lon = dados.lon
+                localColeta.lat = dados.lat
                 localColeta.googleMapsLink = link
 
             }
@@ -142,6 +138,7 @@ class LocalColetaController{
             localColeta.descricao = dados.descricao
             localColeta.contato = dados.contato
             localColeta.tipos_residuo = dados.tipos_residuo
+            localColeta.cep = dados.cep
             localColeta.logradouro = dados.logradouro
             localColeta.complemento = dados.complemento
             localColeta.numero = dados.numero
