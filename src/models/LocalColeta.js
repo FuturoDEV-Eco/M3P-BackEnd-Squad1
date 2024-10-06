@@ -44,7 +44,7 @@ const LocalColeta = connection.define(
             type: DataTypes.STRING
         },
         tipos_residuo: {
-            type: DataTypes.STRING
+            type: DataTypes.ENUM(['Vidro', 'Metal', 'Papel', 'Plástico', 'Orgânico', 'Baterias'])
         },
         usuario_id: {
             type: DataTypes.INTEGER
