@@ -29,14 +29,32 @@ module.exports = {
         lat: {
           type: Sequelize.STRING(100),
         },
-        googleMapsLink: {
+        logradouro: {
           type: Sequelize.STRING(100),
+        },
+        complemento: {
+          type: Sequelize.STRING(100),
+        },
+        numero: {
+          type: Sequelize.STRING(10),
+        },
+        bairro: {
+          type: Sequelize.STRING(100),
+        },
+        localidade: {
+          type: Sequelize.STRING(100),
+        },
+        uf: {
+          type: Sequelize.STRING(2),
+        },
+        googleMapsLink: {
+          type: Sequelize.TEXT,
         },
         contato: {
           type: Sequelize.STRING(100),
         },
-        tipo_residuos: {
-          type: Sequelize.STRING(150),
+        tipos_residuo: {
+          type: Sequelize.STRING,
         },
         usuario_id: {
           type: Sequelize.INTEGER,

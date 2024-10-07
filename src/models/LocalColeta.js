@@ -19,13 +19,31 @@ const LocalColeta = connection.define(
         lat: {
             type: DataTypes.STRING
         },
+        logradouro: {
+            type: DataTypes.STRING
+        },
+        complemento: {
+            type: DataTypes.STRING
+        },
+        numero: {
+            type: DataTypes.STRING
+        },
+        bairro: {
+            type: DataTypes.STRING
+        },
+        localidade: {
+            type: DataTypes.STRING
+        },
+        uf: {
+            type: DataTypes.STRING
+        },
         googleMapsLink: {
             type: DataTypes.STRING
         },
         contato: {
             type: DataTypes.STRING
         },
-        tipo_residuos: {
+        tipos_residuo: {
             type: DataTypes.STRING
         },
         usuario_id: {
