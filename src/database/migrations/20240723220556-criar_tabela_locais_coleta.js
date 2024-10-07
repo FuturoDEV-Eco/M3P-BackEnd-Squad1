@@ -54,8 +54,7 @@ module.exports = {
           type: Sequelize.STRING(100),
         },
         tipos_residuo: {
-          type: Sequelize.ENUM(['Vidro', 'Metal', 'Papel', 'Plástico', 'Orgânico', 'Baterias']),
-          allowNull: false
+          type: Sequelize.STRING,
         },
         usuario_id: {
           type: Sequelize.INTEGER,
