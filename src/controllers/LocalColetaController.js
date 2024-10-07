@@ -46,14 +46,12 @@ class LocalColetaController{
 //Listagem com usuário logado
     async listarLocais(request, response){
         try {
-            const locais = await LocalColeta.findAll({
-                where: {usuario_id: request.usuarioId}
-            })
+            const locais = await LocalColeta.findAll()
 
-            if(locais.length === 0){
+            /* if(locais.length === 0){
                 return response.status(404)
                 .json({ mensagem: "Você não possui locais de coleta cadastrados" })
-            }
+            } */
 
             return response.status(201).json(locais)
  
