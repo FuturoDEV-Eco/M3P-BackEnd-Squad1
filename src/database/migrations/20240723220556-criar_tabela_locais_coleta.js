@@ -54,7 +54,7 @@ module.exports = {
           type: Sequelize.STRING(100),
         },
         tipos_residuo: {
-          type: Sequelize.STRING(150),
+          type: Sequelize.STRING,
         },
         usuario_id: {
           type: Sequelize.INTEGER,
